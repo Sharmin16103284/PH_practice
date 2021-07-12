@@ -1,0 +1,30 @@
+.menu-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.food{
+    border: 3px solid sandybrown;
+    width: 250px;
+    margin: 10px;
+}
+
+.food img{
+    width:100%;
+}
+
+/* @media (max-width:700px) {
+    .food{
+        background-color: seagreen;
+    }
+
+    .menu-container{
+        flex-direction: column;
+    }
+}
+
+@media (min-width:900px) {
+    .food{
+        background-color: slateblue;
+    }
+} */

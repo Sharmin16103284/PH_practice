@@ -1,0 +1,37 @@
+.contailer{
+    height: 200px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; /*place items in bottom*/
+    /* justify-content: for horizontal */
+    /* align-items for vertical */
+}
+.box{
+    height: 100px;
+    width: 100px;
+    border: 1px solid salmon;
+    font-size: 3em;
+    text-align: center;
+}
+
+.contailerTwo{
+    height: 400px;
+    margin-top: 20px;
+    border: 2px solid rgb(148, 0, 0);
+    display: flex;
+}
+
+.boxs{
+    width: 200px;
+    border: 1px solid seagreen;
+}
+
+#box2{
+    order: 1;
+    flex-grow: 1;
+}
+
+#box1{
+    order: 2;
+}

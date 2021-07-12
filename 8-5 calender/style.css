@@ -1,0 +1,26 @@
+.calender{
+    height: 550px;
+    display: grid;
+    grid-template-columns: repeat(7 , 1fr);
+    grid-template-rows: 2em repeat(5,1fr); /* 2em minimise the side of day */
+    grid-gap: 1em;
+}
+
+.date,
+.day{
+    background-color: rgb(141, 141, 140);
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.otherMonth {
+    background-color: lightgray;
+}
+
+.day{
+    font-size: 1.5em;
+    background-color: lightpink;
+}

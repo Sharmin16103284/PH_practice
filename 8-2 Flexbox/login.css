@@ -1,0 +1,36 @@
+.login_container{
+    display: flex;
+    justify-content: center;
+}
+
+.login_form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login_form input , button{
+    font-size: 1.3em;
+    margin-top: 15px;
+    border: 1px solid lightgray;
+    padding-left: 10px;
+}
+
+.login_form button{
+    background-color: lightsalmon;
+    color: lightyellow;
+    font-weight: 700;
+    padding: 5px;
+    border: 0;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a{
+    text-decoration: none;
+    color: lightsalmon;
+    margin-right: 15px;
+    font-weight: 1.3em;
+}
