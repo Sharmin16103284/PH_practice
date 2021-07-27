@@ -24,5 +24,4 @@ img{
 
 .field:hover .ball{
     transform: translate(400px, -200px);
-
 }

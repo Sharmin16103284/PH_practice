@@ -63,7 +63,7 @@
     height: 100px;
     border-radius: 50%;
     background-color: blue;
-    transition: transform .5s ease , border-radius 1s ease;
+    transition: transform .5s ease , border-radius 1s ease , background-color 1.5s ease;
 }
 
 .box:hover{
