@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+<body>
+
+    <!-- 24-1 What is Event, different types of event in web -->
+    <h1>Event</h1>
+    <button onclick="alert('I love rafi')">click me</button>
+
+
+    <!-- 24-2 Add onclick handler directly or via javascript -->
+    
+    <!-- system one -->
+    <button onclick="document.body.style.backgroundColor = 'pink'">click me: pink</button>
+
+    <!-- system two using function-->
+    <button onclick="makeBlue()">click me: blue</button>
+
+    <!-- system three using getElementById--> 
+    <!-- addEventListener -->
+    <button id="bntWhite">click me: white</button>
+
+
+
+    <!-- 24-3 Different ways to use addEventListener on a button -->
+    <button id="bntYellow">click me: yellow</button>
+    <!-- another way -->
+    <button id="bntGray">click me: gray</button>
+    <!-- another way -->
+    <button id="bntPurple">click me: purple</button>
+    <!-- another way -->
+    <button id="bntGreen">click me: green</button>
+
+
+    <!-- 24-4 Most common ways to set Event Handlers -->
+    <p id="clickingMethod"></p>
+    <button onclick="handleJustFunctionClick()">just function</button>
+    <button id="handleEvent">direct add event listener</button>
+
+    <input id="nameField" type="text">
+    <button id="updateName">update</button>
+
+
+
+    <!-- 24-5 Create a comment box and display comment -->
+    <h2>add your comment please !!!</h2>
+    <section>
+        <h4>your comments</h4>
+        <div id="comment-container">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem omnis provident ullam ipsa, illo ex fuga a totam aliquid illum vel. Minima, neque facilis molestias fugit dicta rem. Deserunt, illo.</p>
+            <p>Dolorem, eius praesentium odio, saepe incidunt temporibus sit laborum quae, maiores fugit deleniti quo esse reiciendis error. Unde magni numquam eum corporis nulla cupiditate dicta velit? Doloribus minus eos qui?</p>
+        </div>
+        <div>
+            <textarea name="" id="newComment" cols="60" rows="4"></textarea>
+            <br>
+            <button id="submitComment">post</button>
+        </div>
+    </section>
+
+
+    <!-- 24-6 Simple github like delete confirmation button -->
+    <h2>more events</h2>
+    <section>
+        <h3 id="info">information</h3>
+
+        <input id="delete-confirm" type="text" placeholder="write delete">
+        <button id="deleteBtn" disabled>delete</button> 
+        <!-- button will be enabled only if delete is written inside the input field -->
+    </section>
+
+
+    <!-- 24-7 (semi-advanced) Event bubble and Stop propagating -->
+    <h2>Event Bubble</h2>
+    <section id="bubbleSection">
+        <h4>bubble list</h4>
+        <div id="listContainer">
+            <li class="item">Lorem, ipsum.</li>
+            <li id="secondItem" class="item">Quam, accusamus.</li>
+            <li class="item">Quidem, impedit!</li>
+            <li class="item">Nisi, aliquam.</li>
+            <li class="item">Odio, nam!</li>
+            <li class="item">Mollitia, vel!</li>
+        </div>
+    </section>
+
+
+    <!-- 24-8 (advanced) Event delegate and benefit of Event bubble -->
+
+    <h2>event delegate</h2>
+    <ul id="itemContainer">
+        <li class="item">Lorem, ipsum.</li>
+        <li class="item">Repellendus, commodi.</li>
+        <li class="item">Expedita, cum?</li>
+        <li class="item">Nobis, molestiae.</li>
+        <li class="item">Vero, molestias.</li>
+    </ul>
+    <button id="addItem">Add Item</button>
+
+
+
+
+    <script>
+
+        // 24-2 Add onclick handler directly or via javascript
+        function makeBlue() {
+            document.body.style.backgroundColor = 'skyblue' ;
+        }
+        // white
+        const white = document.getElementById('bntWhite');
+
+        // declaring a function
+        function makeWhite() {
+            document.body.style.backgroundColor = 'white' ;
+        }
+
+        // assigning function name on event
+        // do not use () after function name
+        white.onclick = makeWhite;
+
+
+
+
+        // 24-3 Different ways to use addEventListener on a button
+        const yellow = document.getElementById('bntYellow');
+        yellow.onclick = function() //function name is not mendatoy. it's called anonymous function
+        {
+            document.body.style.backgroundColor = '#FCFCA2';
+        }
+
+        // gray
+        // addEventListener
+        const gray = document.getElementById('bntGray');
+        gray.addEventListener('click' , makeGray);
+
+        function makeGray () 
+        {
+            document.body.style.backgroundColor = '#DCDCDC';
+        }
+
+        // purple
+        const purple = document.getElementById('bntPurple');
+        purple.addEventListener('click' , function makePurple() 
+        {
+            document.body.style.backgroundColor = '#BB8FCE';
+        });
+
+        // green
+        // direct shortcut
+        document.getElementById('bntGreen').addEventListener('click' , function(){
+            document.body.style.backgroundColor = '#ABEBC6';
+        });
+
+
+        // 24-4 Most common ways to set Event Handlers 
+        // using function
+        function handleJustFunctionClick()
+        {
+            const clickingMethod = document.getElementById('clickingMethod');
+            clickingMethod.innerText = 'set by using function' ;
+        }
+
+        // direct
+        document.getElementById('handleEvent').addEventListener('click' , function()
+        {
+            const p = document.getElementById('handleEvent');
+            clickingMethod.innerText = 'set by direct event listener' ;
+        });
+
+
+
+        // nput, update dirct
+        document.getElementById('updateName').addEventListener('click' , function(){
+            const name = document.getElementById('nameField');
+
+            const nameText = document.getElementById('handleEvent');
+            clickingMethod.innerText = name.value ;
+
+            name.value = ''; //name field will be empty after the event
+
+            console.log(name.value); //taking inner text value from input field to update button
+
+        });
+
+
+
+        // 24-5 Create a comment box and display comment
+
+        // 1. add button event handler
+        document.getElementById('submitComment').addEventListener('click' , function(){
+
+            // 2. get user comment
+            const commentbox = document.getElementById('newComment');
+            const userComment = commentbox.value;
+
+            // 3. create comment paragraph
+            const newComment = document.createElement('p');
+            newComment.innerText = userComment; //userComment = commentBox.value
+
+            //  4. append the comment
+            const commentContainer = document.getElementById('comment-container');
+
+            commentContainer.appendChild(newComment);
+
+            // 5. clear comment input field
+            commentbox.value = '';
+            
+        });
+
+
+
+        // 24-6 Simple github like delete confirmation button
+        document.getElementById('deleteBtn').addEventListener('click' , function(){
+
+            document.getElementById('info').style.display = 'none';
+        });
+
+        // focus
+        //makes bg coral when we select input
+        document.getElementById('delete-confirm').addEventListener('focus' , function(){
+
+            document.body.style.backgroundColor = 'coral';
+        });
+
+        // blur
+        //makes bg white when we un-select input
+        document.getElementById('delete-confirm').addEventListener('blur' , function(){
+
+            document.body.style.backgroundColor = 'white';
+        });
+
+        // keydowm -> keyboard keydown 
+        document.getElementById/* ('delete-confirm').addEventListener('keydowm' , function(){
+
+            const delField = document.getElementById('delete-confirm');
+            console.log(delField.value);
+        }); */
+
+        // keypress
+       /*  document.getElementById('delete-confirm').addEventListener('keypress' , function(){
+
+            const delField = document.getElementById('delete-confirm');
+            console.log(delField.value);
+        }); */
+
+        // keyup  -> used most of the times
+        document.getElementById('delete-confirm').addEventListener('keyup' , function(event){
+
+            const delBtn = document.getElementById('deleteBtn');
+            if(event.target.value == 'delete') {
+                delBtn.removeAttribute('disabled'); //enables if delete is written
+            }else{
+                delBtn.setAttribute('disabled' , true); //desabled if deleted is not written
+            }
+
+           /*  const delField = document.getElementById('delete-confirm');
+            console.log(delField.value); */
+        });
+
+        // change
+        document.getElementById('delete-confirm').addEventListener('change' , function(){
+
+            const delField = document.getElementById('delete-confirm');
+            console.log(delField.value);
+        });
+
+
+
+// 24-7 (semi-advanced) Event bubble and Stop propagating
+        document.getElementById('secondItem').addEventListener('click' , function(){
+            console.log('second item clicked');
+        });
+        
+        document.getElementById('listContainer').addEventListener('click' , function(){
+            console.log('second item clicked');
+            event.stopPropagation();
+        });
+
+        document.getElementById('bubbleSection').addEventListener('click' , function(){
+            console.log('Section item clicked');
+        });
+
+
+
+        // 24-8 (advanced) Event delegate and benefit of Event bubble
+
+        // removing child on click
+       /*  const items = document.getElementsByClassName('item');
+        for(const item of items)
+        {
+            // console.log(item);
+            item.addEventListener('click' , function(){
+                // console.log('remove item');
+                
+                // remove item on click
+                // document.getElementById('itemContainer').removeChild(item);
+
+                // or
+                // console.log(event.target.parentNode);
+
+                event.target.parentNode.removeChild(item);
+
+            });
+        } */
+
+        // adding new item
+        document.getElementById('addItem').addEventListener('click' , function(){
+            const li = document.createElement('li');
+            li.innerText = 'brand new items';
+            li.classList.add('item'); 
+            const parent = document.getElementById('itemContainer');
+            parent.appendChild(li);
+        });
+
+        // remove item using bubble and event delegate
+        document.getElementById('itemContainer').addEventListener('click' , function(){
+            event.target.parentNode.removeChild(event.target);
+        })
+
+
+
+    </script>
+    
+</body>
+</html>
