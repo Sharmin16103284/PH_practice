@@ -1,7 +1,6 @@
 // <!-- 25-3 Add event listener navigate to another page -->
 
 document.getElementById('loginSubmit').addEventListener('click' , function(){
-    // console.log('clicked')
 
     // get user email
     const emailField = document.getElementById('email');
@@ -15,6 +14,7 @@ document.getElementById('loginSubmit').addEventListener('click' , function(){
 
 
     // auth
+    // not applicable method. just for learning
     if(userEmail == 'sharmin@gmail.com' && userPassword == 'sharmin')
     {
         // console.log('valid user');
@@ -26,4 +26,8 @@ document.getElementById('loginSubmit').addEventListener('click' , function(){
 
 
 
-// 25-4 Deposit, withdraw, balance area using grid layout
+// 25-5 Create Deposit and withdraw amount Input Fields
+// nothing
+
+
+
